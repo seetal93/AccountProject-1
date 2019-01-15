@@ -8,12 +8,12 @@ public final class Service {
 		
 	}
 	
-	public static void Add(Data data, Account account) {
+	public static void add(Data data, Account account) {
 		data.getUserAccounts().put(account.getLastName(), account.getAccountNumber());
 		
 	}
 	
-	public static HashMap<String, Integer> Retrieve(Data data) {
+	public static HashMap<String, Integer> retrieve(Data data) {
 		return data.getUserAccounts();
 	}
 

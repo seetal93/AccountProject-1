@@ -1,9 +1,7 @@
 package com.qa.AccountProject;
 
-/**
- * Hello world!
- *
- */
+import com.google.gson.Gson;
+
 public class App 
 {
     public static void main( String[] args )
@@ -14,11 +12,13 @@ public class App
         
         Data data = new Data();
         
-        Service.Add(data, accountOne);
-        Service.Add(data, accountTwo);
-        Service.Add(data, accountThree);
+        Service.add(data, accountOne);
+        Service.add(data, accountTwo);
+        Service.add(data, accountThree);
         
-        System.out.println(Service.Retrieve(data));
+        //System.out.println(Service.Retrieve(data));
+        
+        System.out.println(new Gson().toJson(Service.retrieve(data)));
         
     }
 }
