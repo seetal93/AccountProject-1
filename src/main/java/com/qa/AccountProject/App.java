@@ -16,8 +16,6 @@ public class App
         Service.add(data, accountTwo);
         Service.add(data, accountThree);
         
-        //System.out.println(Service.Retrieve(data));
-        
         System.out.println(new Gson().toJson(Service.retrieve(data)));
         
     }
