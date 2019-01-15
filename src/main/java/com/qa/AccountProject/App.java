@@ -10,15 +10,15 @@ public class App
     {
         Account accountOne = new Account("Brother", "Buddy");
         Account accountTwo = new Account("Sister", "Mary");
-        
-        Service service = new Service();
+        Account accountThree = new Account("Cousin", "Susan");
         
         Data data = new Data();
         
-        service.Add(data, accountOne);
-        service.Add(data, accountTwo);
+        Service.Add(data, accountOne);
+        Service.Add(data, accountTwo);
+        Service.Add(data, accountThree);
         
-        System.out.println(service.Retrieve(data));
+        System.out.println(Service.Retrieve(data));
         
     }
 }
