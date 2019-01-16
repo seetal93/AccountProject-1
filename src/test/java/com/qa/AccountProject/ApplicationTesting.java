@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.qa.persistence.domain.Account;
+import com.qa.persistence.repository.Data;
+
 import junit.framework.TestCase;
 
 public class ApplicationTesting {

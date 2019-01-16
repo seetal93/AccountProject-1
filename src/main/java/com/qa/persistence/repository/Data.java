@@ -1,6 +1,8 @@
-package com.qa.AccountProject;
+package com.qa.persistence.repository;
 
 import java.util.HashMap;
+
+import com.qa.persistence.domain.Account;
 
 public class Data {
 	
