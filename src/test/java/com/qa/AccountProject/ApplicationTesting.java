@@ -21,6 +21,7 @@ public class ApplicationTesting {
 		smallBro = new Account("Mr.", "Johnson");
 		
 		Service.add(data, bigBro);
+		Service.add(data, bigBro);
 	}
 
 	@Test
@@ -30,24 +31,23 @@ public class ApplicationTesting {
 	}
 	
 	@Test
-	public void createAccount() {
-		assertEquals(2, bigBro.getAccountNumber());
-	}
-	
-	@Test
 	public void cycleAccounts() {
-		assertEquals(1, Service.countAccounts(data, bigBro));
+		assertEquals(1, Service.countAccounts(data, bigBro.getFirstName()));
 	}
 	
 	@Test
 	public void sizeOfData() {
-		assertEquals(1, Service.countAccounts(data, bigBro));
+		assertEquals(1, Service.countAccounts(data, bigBro.getFirstName()));
 	}
 	
 	@Test
 	@Ignore
 	public void returnCorrectName() {
-		assertEquals("Yo", Service.countAccounts(data, bigBro));
+		assertEquals("Yo", Service.countAccounts(data, bigBro.getFirstName()));
 	}
 	
+	@Test
+	public void countNames() {
+		assertEquals(1, Service.countAccounts(data, bigBro.getFirstName()));
+	}
 }

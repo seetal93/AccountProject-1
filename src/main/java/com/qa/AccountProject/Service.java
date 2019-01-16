@@ -17,9 +17,15 @@ public final class Service {
 		return data.getUserAccounts();
 	}
 	
-	public static int countAccounts(Data data, Account account) {
-		String nameToCount = account.getLastName();
-		return data.getUserAccounts().size();
+	public static int countAccounts(Data data, String firstName) {
+		
+		int counter = 0;
+		for(int i = 0; i < data.getUserAccounts().size(); i++) {
+			if (data.getUserAccounts().containsKey(firstName)){
+				counter++;
+			}
+		}
+		return counter;
 	}
 
 }

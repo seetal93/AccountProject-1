@@ -18,5 +18,8 @@ public class App
         
         System.out.println(new Gson().toJson(Service.retrieve(data)));
         
+        System.out.println(Service.countAccounts(data, accountOne.getFirstName()));
+        
+        
     }
 }

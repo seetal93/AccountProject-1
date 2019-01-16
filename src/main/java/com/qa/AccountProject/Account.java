@@ -21,5 +21,10 @@ public class Account {
 	public int getAccountNumber() {
 		return accountNumber;
 	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
 
 }
