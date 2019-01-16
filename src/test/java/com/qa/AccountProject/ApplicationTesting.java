@@ -48,6 +48,6 @@ public class ApplicationTesting {
 	
 	@Test
 	public void countNames() {
-		assertEquals(1, Service.countAccounts(data, bigBro.getFirstName()));
+		assertEquals(1, Service.countAccounts(data, smallBro.getFirstName()));
 	}
 }

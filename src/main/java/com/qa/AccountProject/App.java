@@ -20,6 +20,5 @@ public class App
         
         System.out.println(Service.countAccounts(data, accountOne.getFirstName()));
         
-        
     }
 }
