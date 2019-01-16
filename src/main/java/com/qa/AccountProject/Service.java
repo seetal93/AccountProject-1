@@ -20,12 +20,16 @@ public final class Service {
 	public static int countAccounts(Data data, String name) {
 		
 		int counter = 0;
-		for(int i = 0; i < data.getUserAccounts().size(); i++) {
-			if (data.getUserAccounts().get(i).equals(name)){
-				counter++;
-			}
-		}
-		return counter;
+		
+		return (int) data.getUserAccounts().values().stream()
+				.filter(eachAccount -> eachAccount.getFirstName().equals(name)).count();
+		
+//		for(int i = 0; i < data.getUserAccounts().size(); i++) {
+//			if (data.getUserAccounts().values().equals(name)){
+//				counter++;
+//			}
+//		}
+//		return counter;
 	}
 
 }
