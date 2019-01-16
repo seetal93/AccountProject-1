@@ -16,5 +16,10 @@ public final class Service {
 	public static HashMap<String, Integer> retrieve(Data data) {
 		return data.getUserAccounts();
 	}
+	
+	public static int countAccounts(Data data, Account account) {
+		String nameToCount = account.getLastName();
+		return data.getUserAccounts().size();
+	}
 
 }
