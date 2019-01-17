@@ -13,16 +13,10 @@ import com.qa.util.JSONUtil;
 @Alternative
 public class AccountMapRepo implements ICRUD {
 	
-	private HashMap<Integer, Account> userAccounts = new HashMap<Integer, Account>();
-	
-	@PersistenceContext(unitName = "primary")
-	private EntityManager manager;
+	private HashMap<Integer, Account> userAccounts = new HashMap();
 
 	@Inject
 	private JSONUtil util;
-	
-	@Inject
-	private Account account;
 	
 	public HashMap<Integer, Account> getUserAccounts() {
 		return userAccounts;
@@ -67,12 +61,4 @@ public class AccountMapRepo implements ICRUD {
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
-	
-	public EntityManager getManager() {
-		return manager;
-	}
-
-	public void setManager(EntityManager manager) {
-		this.manager = manager;
-		}
 }

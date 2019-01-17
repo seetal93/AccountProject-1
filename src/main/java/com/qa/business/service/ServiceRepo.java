@@ -1,16 +1,25 @@
 package com.qa.business.service;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepo;
 
 public interface ServiceRepo {
 	
-	public void add(AccountMapRepo data, Account account);
+	String updateAccount(Account account, String s1);
 	
-	public HashMap<Integer, Account> retrieve(AccountMapRepo data);
+	String getAnAccount(Account account);
 	
-	public int countAccounts(AccountMapRepo data, String name);
+	String getAllAccounts();
+
+	String createAccount(String s1, String s2);
+
+	String deleteAccount(Account account);
+	
+	//public Map<Integer, Account> retrieve(AccountMapRepo data);
+	public int countAccounts(AccountMapRepo data);
+	
+	public int countAccountsByName(AccountMapRepo data, String name);
 
 }

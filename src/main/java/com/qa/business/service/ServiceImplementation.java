@@ -1,6 +1,6 @@
 package com.qa.business.service;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,19 +17,43 @@ public final class ServiceImplementation implements ServiceRepo {
 		
 	}
 	
-	@Override
-	public void add(AccountMapRepo data, Account account) {
-		data.getUserAccounts().put(account.getAccountNumber(), account);
-		
+	public String updateAccount(Account account, String name) {
+		return data.updateAccount(account, name);
 	}
 	
 	@Override
-	public HashMap<Integer, Account> retrieve(AccountMapRepo data) {
+	public String getAllAccounts() {
+		return data.getAllAccounts();
+	}
+	
+	public String getAnAccount(Account account) {
+		return data.getAnAccount(account);
+	}
+	
+	public String createAccount(String FName, String LName) {
+		if (countAccounts(data) == 9998) {
+			return "Unable to create account 9999";
+		}
+		else {
+			return data.createAccount(FName, LName);
+		}
+	}
+	
+	public String deleteAccount(Account account) {
+		return data.deleteAccount(account);
+	}
+	
+	public int countAccounts(AccountMapRepo data) {
+		return (int) data.getUserAccounts().values().stream().count();
+	}
+	
+	/*@Override
+	public Map<Integer, Account> retrieve(AccountMapRepo data) {
 		return data.getUserAccounts();
-	}
+	}*/
 	
 	@Override
-	public int countAccounts(AccountMapRepo data, String name) {
+	public int countAccountsByName(AccountMapRepo data, String name) {
 		
 		return (int) data.getUserAccounts().values().stream()
 				.filter(eachAccount -> eachAccount.getFirstName().equals(name)).count();
