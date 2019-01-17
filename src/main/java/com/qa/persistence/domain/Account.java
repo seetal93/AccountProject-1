@@ -15,6 +15,7 @@ public class Account {
 	private static int ID;
 	@Column (length = 100)
 	private String firstName;
+
 	@Column (length = 100)
 	private String lastName;
 	@Column
@@ -27,6 +28,10 @@ public class Account {
 		ID++;
 	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -37,6 +42,10 @@ public class Account {
 	
 	public String getFirstName() {
 		return firstName;
+	}
+	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 

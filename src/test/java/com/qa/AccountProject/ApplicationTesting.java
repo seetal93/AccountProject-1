@@ -7,24 +7,24 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.qa.persistence.domain.Account;
-import com.qa.persistence.repository.Data;
+import com.qa.persistence.repository.AccountMapRepo;
 
 import junit.framework.TestCase;
 
 public class ApplicationTesting {
 	
-	Data data;
+	AccountMapRepo data;
 	Account bigBro;
 	Account smallBro;
 	
 	@Before
 	public void initialiseClasses() {
-		data = new Data();
+		data = new AccountMapRepo();
 		bigBro = new Account("Yo", "Yo");
 		smallBro = new Account("Mr.", "Johnson");
 		
-		Service.add(data, bigBro);
-		Service.add(data, bigBro);
+		ServiceRepo.add(data, bigBro);
+		ServiceRepo.add(data, bigBro);
 	}
 
 	@Test
@@ -35,22 +35,22 @@ public class ApplicationTesting {
 	
 	@Test
 	public void cycleAccounts() {
-		assertEquals(1, Service.countAccounts(data, bigBro.getFirstName()));
+		assertEquals(1, ServiceRepo.countAccounts(data, bigBro.getFirstName()));
 	}
 	
 	@Test
 	public void sizeOfData() {
-		assertEquals(1, Service.countAccounts(data, bigBro.getFirstName()));
+		assertEquals(1, ServiceRepo.countAccounts(data, bigBro.getFirstName()));
 	}
 	
 	@Test
 	@Ignore
 	public void returnCorrectName() {
-		assertEquals("Yo", Service.countAccounts(data, bigBro.getFirstName()));
+		assertEquals("Yo", ServiceRepo.countAccounts(data, bigBro.getFirstName()));
 	}
 	
 	@Test
 	public void countNames() {
-		assertEquals(1, Service.countAccounts(data, "Yo"));
+		assertEquals(1, ServiceRepo.countAccounts(data, "Yo"));
 	}
 }

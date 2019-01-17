@@ -5,30 +5,31 @@ import java.util.HashMap;
 import javax.inject.Inject;
 
 import com.qa.persistence.domain.Account;
-import com.qa.persistence.repository.Data;
+import com.qa.persistence.repository.ICRUD;
+import com.qa.persistence.repository.AccountMapRepo;
 
-public final class ServiceImplementation implements Service {
+public final class ServiceImplementation implements ServiceRepo {
 	
 	@Inject
-	private Data data;
+	private ICRUD data;
 	
 	private ServiceImplementation() {
 		
 	}
 	
 	@Override
-	public void add(Data data, Account account) {
+	public void add(AccountMapRepo data, Account account) {
 		data.getUserAccounts().put(account.getAccountNumber(), account);
 		
 	}
 	
 	@Override
-	public HashMap<Integer, Account> retrieve(Data data) {
+	public HashMap<Integer, Account> retrieve(AccountMapRepo data) {
 		return data.getUserAccounts();
 	}
 	
 	@Override
-	public int countAccounts(Data data, String name) {
+	public int countAccounts(AccountMapRepo data, String name) {
 		
 		return (int) data.getUserAccounts().values().stream()
 				.filter(eachAccount -> eachAccount.getFirstName().equals(name)).count();
