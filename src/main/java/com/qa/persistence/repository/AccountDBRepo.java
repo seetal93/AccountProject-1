@@ -23,7 +23,7 @@ public class AccountDBRepo implements ICRUD {
 	public EntityManager manager;
 
 	@Inject
-	public JSONUtil util;
+	private JSONUtil util;
 	
 	// transactional -> TCP, if packets are lost, transfer will fail
 	//not transactional -> UTP if packets are lost, transfer will continue
