@@ -8,7 +8,7 @@ import com.qa.persistence.repository.AccountMapRepo;
 public final class ServiceImplementation implements ServiceRepo {
 	
 	@Inject
-	private ICRUD data;
+	public ICRUD data;
 	
 	private ServiceImplementation() {
 		

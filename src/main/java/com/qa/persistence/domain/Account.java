@@ -7,12 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-
 public class Account {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private static Long ID;
+	private static Long id;
 	@Column (length = 100)
 	private String firstName;
 
@@ -24,8 +23,8 @@ public class Account {
 	public Account(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		accountNumber = ID;
-		ID++;
+		accountNumber = id;
+		id++;
 	}
 
 	public void setLastName(String lastName) {

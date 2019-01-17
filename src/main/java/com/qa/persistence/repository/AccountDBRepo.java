@@ -20,10 +20,10 @@ import com.qa.util.JSONUtil;
 public class AccountDBRepo implements ICRUD {
 
 	@PersistenceContext(unitName = "primary") // tells manager to look into persistence xml and use persistence unit: primary.
-	private EntityManager manager;
+	public EntityManager manager;
 
 	@Inject
-	private JSONUtil util;
+	public JSONUtil util;
 	
 	// transactional -> TCP, if packets are lost, transfer will fail
 	//not transactional -> UTP if packets are lost, transfer will continue

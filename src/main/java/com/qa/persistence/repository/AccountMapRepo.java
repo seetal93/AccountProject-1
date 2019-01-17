@@ -14,7 +14,7 @@ public class AccountMapRepo implements ICRUD {
 	private HashMap<Long, Account> userAccounts = new HashMap<>();
 
 	@Inject
-	private JSONUtil util;
+	public JSONUtil util;
 	
 	public HashMap<Long, Account> getUserAccounts() {
 		return userAccounts;
