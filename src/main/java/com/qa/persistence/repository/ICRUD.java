@@ -1,18 +1,16 @@
 package com.qa.persistence.repository;
 
-import com.qa.persistence.domain.Account;
-
 public interface ICRUD {
 		
-		String updateAccount(Account account, String s1);
+		String updateAccount(String jsonData);
 		
-		String getAnAccount(Account account);
+		String getAnAccount(String jsonData);
 		
 		String getAllAccounts();
 
-		String createAccount(String s1, String s2);
+		String createAccount(String jsonData);
 
-		String deleteAccount(Account account);
+		String deleteAccount(Long id);
 		
 
 	}

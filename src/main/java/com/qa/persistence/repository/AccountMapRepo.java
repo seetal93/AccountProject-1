@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
@@ -13,12 +11,12 @@ import com.qa.util.JSONUtil;
 @Alternative
 public class AccountMapRepo implements ICRUD {
 	
-	private HashMap<Integer, Account> userAccounts = new HashMap();
+	private HashMap<Long, Account> userAccounts = new HashMap<>();
 
 	@Inject
 	private JSONUtil util;
 	
-	public HashMap<Integer, Account> getUserAccounts() {
+	public HashMap<Long, Account> getUserAccounts() {
 		return userAccounts;
 	}
 	
@@ -28,29 +26,36 @@ public class AccountMapRepo implements ICRUD {
 	}
 	
 	@Override
-	public String getAnAccount(Account account) {
-		return getUserAccounts().get(account).toString();
+	public String getAnAccount(String accountToGet) {
+		Account account = util.getObjectForJSON(accountToGet, Account.class);
+		return getUserAccounts().get(account.getAccountNumber()).toString();
 	}
 
 	@Override
-	public String createAccount(String s1, String s2) {
-		Account account = new Account(s1, s2);
+	public String createAccount(String accountToCreate) {
+		Account account = util.getObjectForJSON(accountToCreate, Account.class);
 		userAccounts.put(account.getAccountNumber(), account);
 		return account.getFirstName() + " Created!";
 	}
 	
 	@Override
-	public String deleteAccount(Account account) {
-		getUserAccounts().remove(account);
-		return account + " deleted";
+	public String deleteAccount(Long id) {
+		getUserAccounts().remove(id);
+		return "account deleted!";
 	}
 	
 	@Override
-	public String updateAccount(Account account, String name) {
-		account.setFirstName(name);
+	public String updateAccount(String accountToUpdate) {
 		
-		return account.getFirstName() + "updated!";
-	}
+		Account account = util.getObjectForJSON(accountToUpdate, Account.class);
+		
+		if (account != null) {
+		userAccounts.remove(account.getAccountNumber());
+		userAccounts.put(account.getAccountNumber(), account);
+		}
+		
+		return account.getAccountNumber() + "account updated!";
+		}
 	
 	// below are getters/setters and utility.
 

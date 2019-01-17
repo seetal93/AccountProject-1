@@ -12,14 +12,14 @@ public class Account {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private static int ID;
+	private static Long ID;
 	@Column (length = 100)
 	private String firstName;
 
 	@Column (length = 100)
 	private String lastName;
 	@Column
-	private int accountNumber;
+	private Long accountNumber;
 	
 	public Account(String firstName, String lastName) {
 		this.firstName = firstName;
@@ -36,7 +36,7 @@ public class Account {
 		return lastName;
 	}
 
-	public int getAccountNumber() {
+	public Long getAccountNumber() {
 		return accountNumber;
 	}
 	

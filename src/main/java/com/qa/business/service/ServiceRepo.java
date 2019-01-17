@@ -1,21 +1,18 @@
 package com.qa.business.service;
 
-import java.util.Map;
-
-import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepo;
 
 public interface ServiceRepo {
 	
-	String updateAccount(Account account, String s1);
+	String updateAccount(String jsonData);
 	
-	String getAnAccount(Account account);
+	String getAnAccount(String jsonData);
 	
 	String getAllAccounts();
 
-	String createAccount(String s1, String s2);
+	String createAccount(String jsonData);
 
-	String deleteAccount(Account account);
+	String deleteAccount(Long id);
 	
 	//public Map<Integer, Account> retrieve(AccountMapRepo data);
 	public int countAccounts(AccountMapRepo data);

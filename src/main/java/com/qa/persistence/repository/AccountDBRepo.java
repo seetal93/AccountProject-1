@@ -34,31 +34,43 @@ public class AccountDBRepo implements ICRUD {
 	}
 	
 	@Override
-	public String getAnAccount(Account account) {
-		return util.getJSONForObject(account);
+	public String getAnAccount(String accountToRetrieve) {
+		Account account = util.getObjectForJSON(accountToRetrieve, Account.class);
+		account = findAccount(account.getAccountNumber());
 		
+		return account.toString();
 	}
 	
 	@Override
 	@Transactional(REQUIRED)
-	public String createAccount(String fN, String lN) {
-		Account account = new Account(fN, lN);
+	public String createAccount(String accountToCreate) {
+		Account account = util.getObjectForJSON(accountToCreate, Account.class);
 		manager.persist(account);
 		return account.getAccountNumber() + " created!";
 	}
 	
 	@Transactional(REQUIRED)
-	public String deleteAccount(Account account) {
-		manager.remove(account);
-		return account + " deleted";
+	public String deleteAccount(Long id) {
+		Account account = findAccount(id);
+		if (account != null) {
+			manager.remove(account);
+		}
+		return "Account deleted";
 	}
 	
 	@Override
 	@Transactional(REQUIRED)
-	public String updateAccount(Account account, String newName) {
-		account.setFirstName(newName);
-		
-		return account + " updated!";
+	public String updateAccount(String accountToUpdate) {
+		Account account = util.getObjectForJSON(accountToUpdate, Account.class);
+		if (account != null) {
+			manager.remove(account.getAccountNumber());
+			manager.persist(account);
+		}
+		return account.getAccountNumber() + " updated!";
+	}
+	
+	private Account findAccount(Long id) {
+		return manager.find(Account.class, id);
 	}
 	
 	// below are getters/setters and utility.

@@ -1,5 +1,7 @@
 package com.qa.rest;
 
+import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -12,6 +14,7 @@ import com.qa.business.service.ServiceImplementation;
 @Path("/account") // going to the path activates the class
 public class AccountEndpoint {
 	
+	@Inject
 	private ServiceImplementation service;
 	
 	@Path("/json") // activates method
@@ -22,17 +25,31 @@ public class AccountEndpoint {
 	}
 	
 	@Path("/json")
+	@GET
+	@Produces({ "application/json" })
+	public String getAnAccount(String account) {
+		return service.getAnAccount(account);
+	}
+	
+	@Path("/json")
 	@POST
 	@Produces({ "application/json" })
-	public String createAccount(String account) { // must only take in one param
-		return service.createAccount(account);
+	public String createAccount(String jsonData) { // must only take in one param
+		return service.createAccount(jsonData);
 	}
 	
 	@Path("/json/{id}")
-	@PUT
+	@DELETE
 	@Produces({ "application/json" })
 	public String deleteAccount(@PathParam("id") Long id) {
 		return service.deleteAccount(id);
+	}
+	
+	@Path("/json")
+	@PUT
+	@Produces({ "application/json" })
+	public String updateAccount(String jsonData) {
+		return service.updateAccount(jsonData);
 	}
 
 }

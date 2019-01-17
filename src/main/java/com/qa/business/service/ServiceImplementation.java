@@ -1,10 +1,7 @@
 package com.qa.business.service;
 
-import java.util.Map;
-
 import javax.inject.Inject;
 
-import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.ICRUD;
 import com.qa.persistence.repository.AccountMapRepo;
 
@@ -17,8 +14,8 @@ public final class ServiceImplementation implements ServiceRepo {
 		
 	}
 	
-	public String updateAccount(Account account, String name) {
-		return data.updateAccount(account, name);
+	public String updateAccount(String accountToUpdate) {
+		return data.updateAccount(accountToUpdate);
 	}
 	
 	@Override
@@ -26,21 +23,16 @@ public final class ServiceImplementation implements ServiceRepo {
 		return data.getAllAccounts();
 	}
 	
-	public String getAnAccount(Account account) {
-		return data.getAnAccount(account);
+	public String getAnAccount(String getAccount) {
+		return data.getAnAccount(getAccount);
 	}
 	
-	public String createAccount(String FName, String LName) {
-		if (countAccounts(data) == 9998) {
-			return "Unable to create account 9999";
-		}
-		else {
-			return data.createAccount(FName, LName);
-		}
+	public String createAccount(String accountToCreate) {
+			return data.createAccount(accountToCreate);
 	}
 	
-	public String deleteAccount(Account account) {
-		return data.deleteAccount(account);
+	public String deleteAccount(Long id) { //??
+		return data.deleteAccount(id);
 	}
 	
 	public int countAccounts(AccountMapRepo data) {
